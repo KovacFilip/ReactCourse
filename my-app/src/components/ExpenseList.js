@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './Card';
 import ExpenseItem from './ExpenseItem';
 import './ExpenseList.css';
 
@@ -13,7 +14,7 @@ function ExpenseList({ expenses }) {
     );
   });
 
-  return <div className="expenses">{list}</div>;
+  return <Card className="expenses">{list}</Card>;
 }
 
 export default ExpenseList;

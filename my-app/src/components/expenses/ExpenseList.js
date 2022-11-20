@@ -7,6 +7,7 @@ function ExpenseList({ expenses }) {
     const list = expenses.map((expense, i) => {
         return (
             <ExpenseItem
+                key={i}
                 date={expense.date}
                 title={expense.title}
                 amount={expense.amount}

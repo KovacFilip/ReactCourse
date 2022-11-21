@@ -7,10 +7,10 @@ import ExpensesFilter from './ExpensesFilter';
 function ExpenseList({ expenses }) {
     const [year, setYear] = useState('2020');
 
-    const list = expenses.map((expense, i) => {
+    const list = expenses.map((expense) => {
         return (
             <ExpenseItem
-                key={i}
+                key={expense.id}
                 date={expense.date}
                 title={expense.title}
                 amount={expense.amount}

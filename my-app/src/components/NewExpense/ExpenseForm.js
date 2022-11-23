@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './ExpenseForm.css';
 
-const ExpenseForm = ({ onSaveExpenseData, onCancel, hideAfterAdd }) => {
+const ExpenseForm = ({ onSaveExpenseData, onCancel }) => {
     const [userInput, setUserInput] = useState({
         title: '',
         amount: '',
@@ -52,8 +52,6 @@ const ExpenseForm = ({ onSaveExpenseData, onCancel, hideAfterAdd }) => {
             amount: '',
             date: '',
         });
-
-        hideAfterAdd();
     };
 
     return (

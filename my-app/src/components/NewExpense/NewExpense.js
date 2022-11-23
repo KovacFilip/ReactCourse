@@ -12,6 +12,7 @@ const NewExpense = ({ onAddExpense }) => {
         };
 
         onAddExpense(expenseData);
+        setShowForm(false);
     };
 
     const handleClickNewExpense = () => {
@@ -31,7 +32,6 @@ const NewExpense = ({ onAddExpense }) => {
                 <ExpenseForm
                     onSaveExpenseData={saveExpenseDataHandler}
                     onCancel={hideForm}
-                    hideAfterAdd={hideForm}
                 />
             )}
         </div>

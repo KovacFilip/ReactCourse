@@ -7,16 +7,20 @@ import ExpensesFilter from './ExpensesFilter';
 function ExpenseList({ expenses }) {
     const [year, setYear] = useState('2020');
 
-    const list = expenses.map((expense) => {
-        return (
-            <ExpenseItem
-                key={expense.id}
-                date={expense.date}
-                title={expense.title}
-                amount={expense.amount}
-            />
-        );
-    });
+    const list = expenses
+        .filter((expense) => {
+            return expense.date.getFullYear().toString() === year;
+        })
+        .map((expense) => {
+            return (
+                <ExpenseItem
+                    key={expense.id}
+                    date={expense.date}
+                    title={expense.title}
+                    amount={expense.amount}
+                />
+            );
+        });
 
     return (
         <Card className="expenses">

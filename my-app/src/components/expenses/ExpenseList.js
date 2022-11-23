@@ -25,7 +25,7 @@ function ExpenseList({ expenses }) {
     return (
         <Card className="expenses">
             <ExpensesFilter selectedYear={year} onChangeYear={setYear} />
-            {list}
+            {list.length === 0 ? <p>No expenses found</p> : list}
         </Card>
     );
 }

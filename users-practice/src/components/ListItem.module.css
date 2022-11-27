@@ -1,0 +1,24 @@
+.listItem {
+    background-color: #fdfeff;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 20px;
+    height: 60px;
+    border-radius: 10px 100px / 120px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: #1c2126;
+    font-weight: bold;
+    margin-left: 25%;
+}
+
+.name {
+    margin-top: 10px;
+    margin-bottom: 3px;
+}

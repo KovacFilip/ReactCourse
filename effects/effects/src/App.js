@@ -7,6 +7,14 @@ import MainHeader from './components/MainHeader/MainHeader';
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    useEffect(() => {
+        const storedUserLoggedInInfo = localStorage.getItem('isLoggedIn');
+
+        if (storedUserLoggedInInfo === '1') {
+            setIsLoggedIn(true);
+        }
+    }, []);
+
     const loginHandler = (email, password) => {
         // We should of course check email and password
         // But it's just a dummy/ demo anyways
@@ -18,14 +26,6 @@ function App() {
         localStorage.removeItem('isLoggedIn');
         setIsLoggedIn(false);
     };
-
-    useEffect(() => {
-        const storedUserLoggedInInfo = localStorage.getItem('isLoggedIn');
-
-        if (storedUserLoggedInInfo === '1') {
-            setIsLoggedIn(true);
-        }
-    }, []);
 
     return (
         <React.Fragment>

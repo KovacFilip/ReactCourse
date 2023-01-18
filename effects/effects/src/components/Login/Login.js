@@ -4,6 +4,7 @@ import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
 import AuthContext from '../../store/auth-context';
+import Input from '../Input/Input';
 
 const emailReducer = (state, action) => {
     if (action.type === 'USER_INPUT') {
@@ -32,12 +33,12 @@ const Login = (props) => {
 
     const [emailState, dispatchEmail] = useReducer(emailReducer, {
         value: '',
-        isValid: true,
+        isValid: false,
     });
 
     const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
         value: '',
-        isValid: null,
+        isValid: false,
     });
 
     const { isValid: emailIsValid } = emailState;
@@ -80,7 +81,23 @@ const Login = (props) => {
     return (
         <Card className={classes.login}>
             <form onSubmit={submitHandler}>
-                <div
+                <Input
+                    isValid={emailIsValid}
+                    type="email"
+                    labelText="E-Mail"
+                    value={emailState.value}
+                    onBlur={validateEmailHandler}
+                    onChange={emailChangeHandler}
+                />
+                <Input
+                    isValid={passwordIsValid}
+                    type="password"
+                    labelText="Password"
+                    value={passwordState.value}
+                    onBlur={validatePasswordHandler}
+                    onChange={passwordChangeHandler}
+                />
+                {/* <div
                     className={`${classes.control} ${
                         !emailState.isValid ? classes.invalid : ''
                     }`}
@@ -107,7 +124,7 @@ const Login = (props) => {
                         onChange={passwordChangeHandler}
                         onBlur={validatePasswordHandler}
                     />
-                </div>
+                </div> */}
                 <div className={classes.actions}>
                     <Button
                         type="submit"

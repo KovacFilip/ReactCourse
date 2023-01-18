@@ -2,12 +2,10 @@ import React from 'react';
 import { Input } from '../../UI/Input';
 import classes from './MealItemForm.module.css';
 
-export const MealItemForm = ({ id }) => {
+export const MealItemForm = ({ id, onAddHandler }) => {
     const submitHandler = (e, el) => {
         e.preventDefault();
-        console.log('Adding to the list');
-        console.log(e);
-        console.log(el);
+        onAddHandler();
     };
 
     return (

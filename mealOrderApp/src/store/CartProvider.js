@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CartContext } from './cart-context';
 
 export const CartProvider = (props) => {
-    const addItemToCartHandler = (item) => {};
+    const [cartItems, setCartItems] = useState([]);
+
+    const addItemToCartHandler = (item) => {
+        console.log(item);
+        setCartItems((prevState) => [...prevState, item]);
+    };
 
     const removeItemFromCartHanlder = (id) => {};
 
     const cartContext = {
-        items: [],
+        items: cartItems,
         totalAmount: 0,
         addItem: addItemToCartHandler,
         removeItem: removeItemFromCartHanlder,

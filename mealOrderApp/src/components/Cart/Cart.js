@@ -9,7 +9,9 @@ export const Cart = ({ closeCart }) => {
     const cartItems = (
         <ul className={classes['cart-items']}>
             {cartCtx.items.map((item) => (
-                <li key={item.id}>{item.name}</li>
+                <li key={item.id}>
+                    {item.name}, amount: {item.amount}
+                </li>
             ))}
         </ul>
     );

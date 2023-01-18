@@ -13,7 +13,7 @@ export const Cart = ({ closeCart }) => {
         </ul>
     );
     return (
-        <Modal>
+        <Modal closeCart={closeCart}>
             {cartItems}
             <div className={classes.total}>
                 <span>Total Amount</span>

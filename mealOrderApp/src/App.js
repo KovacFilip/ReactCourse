@@ -16,7 +16,7 @@ function App() {
 
     return (
         <>
-            <Cart show={showCart} closeCart={closeCart} />
+            {showCart && <Cart closeCart={closeCart} />}
             <Header openCart={openCart} />
             <main>
                 <Meals />

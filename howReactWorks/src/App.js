@@ -6,6 +6,8 @@ import Button from './components/UI/Button/Button';
 function App() {
     const [showParagraph, setShowParagraph] = useState(false);
 
+    console.log('RE-RENDERING');
+
     const toggleParagraphHandler = () => {
         setShowParagraph((prevState) => {
             return !prevState;

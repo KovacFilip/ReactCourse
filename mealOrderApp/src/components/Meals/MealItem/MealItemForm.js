@@ -20,7 +20,7 @@ export const MealItemForm = ({ id, onAddHandler }) => {
             return -1;
         }
         setAmountIsValid(true);
-        onAddHandler(enteredAmount);
+        onAddHandler(enteredAmountNumber);
     };
 
     return (

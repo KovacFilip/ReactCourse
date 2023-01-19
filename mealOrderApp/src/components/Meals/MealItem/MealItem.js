@@ -8,8 +8,12 @@ export const MealItem = ({ name, desc, price, id, ...props }) => {
 
     const cartCtx = useContext(CartContext);
 
-    const onAddHandler = () => {
-        cartCtx.addItem({ name, desc, price, id });
+    const onAddHandler = (amount) => {
+        if (amount === -1) {
+            return;
+        }
+
+        cartCtx.addItem({ name, desc, price, id, amount });
     };
 
     return (

@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 
 import './App.css';
 import { DemoOutput } from './components/Demo/DemoOutput';
-import Button from './components/UI/Button/Button';
+// import DemoOutput from './components/Demo/DemoOutput';
+import { Button } from './components/UI/Button/Button';
 
 function App() {
     const [showParagraph, setShowParagraph] = useState(false);
 
-    console.log('RE-RENDERING');
+    console.log('RE-EVALUATING APP');
 
     const toggleParagraphHandler = () => {
         setShowParagraph((prevState) => {

@@ -13,9 +13,6 @@ const SimpleInput = () => {
     const enteredEmailIsValid = enteredEmail.match(emailRegex);
     const emailInputIsInvalid =
         enteredEmailIsValid === null && enteredEmailTouched;
-    console.log(enteredEmailIsValid);
-    console.log(enteredEmailTouched);
-    console.log(emailInputIsInvalid);
 
     let formIsValid = enteredNameIsValid && enteredEmailIsValid;
 

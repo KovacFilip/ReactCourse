@@ -7,6 +7,8 @@ const SimpleInput = () => {
     const enteredNameIsValid = enteredName.trim() !== '';
     const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
 
+    let formIsValid = enteredNameIsValid;
+
     const onInputBlurHandler = () => {
         setEnteredNameTouched(true);
     };
@@ -20,7 +22,7 @@ const SimpleInput = () => {
 
         setEnteredNameTouched(true);
 
-        if (!enteredNameIsValid) {
+        if (!formIsValid) {
             return;
         }
 
@@ -49,7 +51,9 @@ const SimpleInput = () => {
                 )}
             </div>
             <div className="form-actions">
-                <button type="submit">Submit</button>
+                <button disabled={!formIsValid} type="submit">
+                    Submit
+                </button>
             </div>
         </form>
     );

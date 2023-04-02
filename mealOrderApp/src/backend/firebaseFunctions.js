@@ -3,11 +3,8 @@ import axios from 'axios';
 const FIREBASE_URL =
     'https://react-http-d4588-default-rtdb.europe-west1.firebasedatabase.app/';
 
-const URL =
-    'https://react-http-d4588-default-rtdb.europe-west1.firebasedatabase.app/Meals.json';
-
 export const getMeals = () => {
-    return axios.get(URL);
+    return axios.get(FIREBASE_URL + '/Meals.json');
 };
 
 export const postMeals = () => {
@@ -38,13 +35,6 @@ export const postMeals = () => {
                 price: 18.99,
             },
         ])
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-};
-
-export const getMovies = async () => {
-    axios
-        .get(FIREBASE_URL + 'movies.json')
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
 };

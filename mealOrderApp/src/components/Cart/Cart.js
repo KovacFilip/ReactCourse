@@ -3,6 +3,7 @@ import { CartContext } from '../../store/cart-context';
 import { Modal } from '../UI/Modal';
 import classes from './Cart.module.css';
 import CartItem from './CartItem';
+import { OrderFormInput } from './OrderFormInput';
 
 export const Cart = ({ closeCart }) => {
     const cartCtx = useContext(CartContext);
@@ -42,6 +43,20 @@ export const Cart = ({ closeCart }) => {
         event.PreventDefault();
     };
 
+    const form = (
+        <form onSubmit={submitForm} className={classes['container']}>
+            <div className={classes['block']}>
+                {OrderFormInput('Name:')}
+                {OrderFormInput('LastName:')}
+            </div>
+            <div className={classes['block']}>
+                {OrderFormInput('City:')}
+                {OrderFormInput('Street:')}
+                {OrderFormInput('House Number:')}
+            </div>
+        </form>
+    );
+
     return (
         <Modal closeCart={closeCart}>
             {cartItems}
@@ -62,34 +77,7 @@ export const Cart = ({ closeCart }) => {
                     </button>
                 )}
             </div>
-            {displayOrderForm && (
-                <form onSubmit={submitForm} className={classes['container']}>
-                    <div className={classes['block']}>
-                        <label>
-                            Name:
-                            <input type="text" name="name" />
-                        </label>
-                        <label>
-                            Last Name:
-                            <input type="text" name="lastName" />
-                        </label>
-                    </div>
-                    <div className={classes['block']}>
-                        <label>
-                            City:
-                            <input type="text" name="city" />
-                        </label>
-                        <label>
-                            Street:
-                            <input type="text" name="street" />
-                        </label>
-                        <label>
-                            House Number:
-                            <input type="text" name="houseNumber" />
-                        </label>
-                    </div>
-                </form>
-            )}
+            {displayOrderForm && form}
         </Modal>
     );
 };

@@ -44,3 +44,33 @@
     background-color: #8a2b06;
     color: white;
 }
+
+.container {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.block {
+    padding-top: 2rem;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+form label input {
+    border-radius: 25px;
+    padding: 0.5rem 2rem;
+    font: inherit;
+    max-width: 100%;
+}
+
+form label {
+    max-width: 33%;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #8a2b06;
+}

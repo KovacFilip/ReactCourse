@@ -4,7 +4,11 @@ const FIREBASE_URL =
     'https://react-http-d4588-default-rtdb.europe-west1.firebasedatabase.app/';
 
 export const getMeals = () => {
-    return axios.get(FIREBASE_URL + '/Meals.json');
+    return axios.get(FIREBASE_URL + 'Meals.json');
+};
+
+export const placeOrder = (data) => {
+    return axios.post(FIREBASE_URL + 'Orders.json', data);
 };
 
 export const postMeals = () => {

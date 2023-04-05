@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { CartContext } from '../../store/cart-context';
 import { Modal } from '../UI/Modal';
+import { Form } from '../form/Form';
 import classes from './Cart.module.css';
 import CartItem from './CartItem';
-import { OrderFormInput } from './OrderFormInput';
 
 export const Cart = ({ closeCart }) => {
     const cartCtx = useContext(CartContext);
@@ -12,13 +12,19 @@ export const Cart = ({ closeCart }) => {
     const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
     const hasItems = cartCtx.items.length > 0;
 
-    const cartItemRemoveHandler = (id) => {
-        cartCtx.removeItem(id);
-    };
+    const cartItemRemoveHandler = useCallback(
+        (id) => {
+            cartCtx.removeItem(id);
+        },
+        [cartCtx]
+    );
 
-    const cartItemAddHandler = (item) => {
-        cartCtx.addItem({ ...item, amount: 1 });
-    };
+    const cartItemAddHandler = useCallback(
+        (item) => {
+            cartCtx.addItem({ ...item, amount: 1 });
+        },
+        [cartCtx]
+    );
 
     const cartItems = (
         <ul className={classes['cart-items']}>
@@ -35,27 +41,9 @@ export const Cart = ({ closeCart }) => {
         </ul>
     );
 
-    const handleOrderClick = () => {
+    const handleOrderClick = useCallback(() => {
         setDisplayOrderForm(true);
-    };
-
-    const submitForm = (event) => {
-        event.PreventDefault();
-    };
-
-    const form = (
-        <form onSubmit={submitForm} className={classes['container']}>
-            <div className={classes['block']}>
-                {OrderFormInput('Name:')}
-                {OrderFormInput('LastName:')}
-            </div>
-            <div className={classes['block']}>
-                {OrderFormInput('City:')}
-                {OrderFormInput('Street:')}
-                {OrderFormInput('House Number:')}
-            </div>
-        </form>
-    );
+    }, []);
 
     return (
         <Modal closeCart={closeCart}>
@@ -77,7 +65,7 @@ export const Cart = ({ closeCart }) => {
                     </button>
                 )}
             </div>
-            {displayOrderForm && form}
+            {displayOrderForm && <Form />}
         </Modal>
     );
 };

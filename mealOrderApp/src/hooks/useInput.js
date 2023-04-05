@@ -1,34 +1,28 @@
 // Create a custom hook, that implements a form input functionality
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
-const useInput = () => {
+export const useInput = () => {
     const [value, setValue] = useState('');
     const [wasTouched, setWasTouched] = useState(false);
 
     const isValueValid = value !== '';
 
-    const setBlur = () => {
+    const setBlur = useCallback(() => {
         setWasTouched(true);
-    };
+    }, []);
+
+    const setUnblur = () => setWasTouched(false);
+
+    const erase = () => setValue('');
 
     const error = wasTouched && !isValueValid;
 
     const styles = error ? 'error' : '';
-    console.log(
-        `value: ${value}, wasTouched: ${wasTouched}, isValid: ${isValueValid}, error: ${error}, styles: ${styles}`
-    );
 
-    const onChangeValue = (ev) => {
+    const onChangeValue = useCallback((ev) => {
         setWasTouched(true);
         setValue(ev.target.value);
-    };
+    }, []);
 
-    return {
-        value: value,
-        onChangeValue: onChangeValue,
-        blur: setBlur,
-        styles: styles,
-    };
+    return [value, erase, setUnblur, onChangeValue, setBlur, styles];
 };
-
-export default useInput;

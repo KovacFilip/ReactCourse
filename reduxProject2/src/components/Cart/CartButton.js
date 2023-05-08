@@ -1,19 +1,21 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleVisible } from '../../store/cartSlice';
 import classes from './CartButton.module.css';
 
 const CartButton = (props) => {
     const dispatch = useDispatch();
+    const amount = useSelector((state) =>
+        state.cart.items.reduce((acc, curr) => (acc += curr.amount), 0)
+    );
 
     const showCart = () => {
-        console.log('Trying to change the show');
         dispatch(toggleVisible());
     };
 
     return (
         <button onClick={showCart} className={classes.button}>
             <span>My Cart</span>
-            <span className={classes.badge}>1</span>
+            <span className={classes.badge}>{amount}</span>
         </button>
     );
 };

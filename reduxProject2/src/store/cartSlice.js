@@ -7,25 +7,21 @@ const cartSlice = createSlice({
     initialState: initialState,
     reducers: {
         addItem(state, action) {
-            const items = state.items;
             const itemToAdd = action.payload.item;
-            let alreadyInList = false;
 
-            items.forEach((item) => {
-                if (item.title === itemToAdd.title) {
-                    item.amount += 1;
-                    alreadyInList = true;
-                }
-            });
-
-            if (!alreadyInList) {
-                state.items.push(action.payload.item);
+            const itemInCart = state.items.find(
+                (item) => item.id === itemToAdd.id
+            );
+            if (itemInCart) {
+                itemInCart.amount += 1;
+            } else {
+                state.items.push(itemToAdd);
             }
         },
 
         removeOne(state, action) {
             state.items.forEach((item, index) => {
-                if (item.title === action.payload) {
+                if (item.id === action.payload) {
                     item.amount -= 1;
                     if (item.amount === 0) {
                         state.items.splice(index, 1);
@@ -36,7 +32,7 @@ const cartSlice = createSlice({
 
         addOne(state, action) {
             state.items.forEach((item, index) => {
-                if (item.title === action.payload) {
+                if (item.id === action.payload) {
                     item.amount += 1;
                 }
             });

@@ -4,7 +4,7 @@ import Card from '../UI/Card';
 import classes from './ProductItem.module.css';
 
 const ProductItem = (props) => {
-    const { title, price, description } = props;
+    const { title, price, description, id } = props;
     const dispatch = useDispatch();
 
     const addItemHandler = () => {
@@ -15,6 +15,7 @@ const ProductItem = (props) => {
                     price: price,
                     description: description,
                     amount: 1,
+                    id: id,
                 },
             })
         );

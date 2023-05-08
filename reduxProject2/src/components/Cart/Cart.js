@@ -8,12 +8,13 @@ const Cart = (props) => {
 
     const cartItems = items.map((item, index) => (
         <CartItem
-            key={index}
+            key={item.id}
             item={{
                 title: item.title,
                 quantity: item.amount,
                 price: item.price,
                 total: item.price * item.amount,
+                id: item.id,
             }}
         />
     ));

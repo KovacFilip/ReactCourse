@@ -5,24 +5,24 @@ import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
 import { useDispatch } from "react-redux";
 import Notification from "./components/UI/Notification";
-import { sendCartData } from "./store/cartSlice";
-
-let isInitial = true;
+import { fetchCartData, sendCartData } from "./store/cartSlice";
 
 function App() {
     const dispatch = useDispatch();
     const show = useSelector((state) => state.ui.cartIsVisible);
     const cart = useSelector((state) => state.cart);
     const notification = useSelector((state) => state.ui.notification);
+    const changed = useSelector((state) => state.cart.changedCart);
 
     useEffect(() => {
-        if (isInitial) {
-            isInitial = false;
-            return;
-        }
+        dispatch(fetchCartData());
+    }, [dispatch]);
 
-        dispatch(sendCartData(cart));
-    }, [cart, dispatch]);
+    useEffect(() => {
+        if (changed) {
+            dispatch(sendCartData(cart));
+        }
+    }, [cart, dispatch, changed]);
 
     return (
         <>

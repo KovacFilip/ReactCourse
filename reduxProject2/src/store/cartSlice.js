@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { setNotification } from "./ui-slice";
 
-const initialState = { items: [] };
+const initialState = { items: [], changedCart: false };
+const FIREBASE_PATH =
+    "https://react-http-d4588-default-rtdb.europe-west1.firebasedatabase.app/cart.json";
 
 const cartSlice = createSlice({
     name: "cart",
@@ -18,6 +20,8 @@ const cartSlice = createSlice({
             } else {
                 state.items.push(itemToAdd);
             }
+
+            state.changedCart = true;
         },
 
         removeOne(state, action) {
@@ -29,6 +33,8 @@ const cartSlice = createSlice({
                     }
                 }
             });
+
+            state.changedCart = true;
         },
 
         addOne(state, action) {
@@ -37,6 +43,12 @@ const cartSlice = createSlice({
                     item.amount += 1;
                 }
             });
+
+            state.changedCart = true;
+        },
+
+        setCartItems(state, action) {
+            state.items = action.payload.items || [];
         },
     },
 });
@@ -52,10 +64,10 @@ export const sendCartData = (cart) => {
         );
 
         const sendRequest = async () => {
-            const response = await fetch(
-                "https://react-http-d4588-default-rtdb.europe-west1.firebasedatabase.app/cart.json",
-                { method: "PUT", body: JSON.stringify(cart) }
-            );
+            const response = await fetch(FIREBASE_PATH, {
+                method: "PUT",
+                body: JSON.stringify(cart),
+            });
 
             if (!response.ok) {
                 throw new Error("Sending cart data failed!");
@@ -82,6 +94,41 @@ export const sendCartData = (cart) => {
         }
     };
 };
+export const fetchCartData = () => async (dispatch) => {
+    const fetchData = async () => {
+        const response = await fetch(FIREBASE_PATH);
 
-export const { addItem, addOne, removeOne } = cartSlice.actions;
+        if (!response.ok) {
+            throw new Error("Could not fetch the cart data!");
+        }
+
+        const data = await response.json();
+
+        return data;
+    };
+
+    try {
+        const cartData = await fetchData();
+        console.log(cartData);
+        dispatch(setCartItems(cartData));
+        dispatch(
+            setNotification({
+                status: "success",
+                title: "Success!",
+                message: "Fetched cart data successfully!",
+            })
+        );
+    } catch (error) {
+        console.log("err: ", error);
+        dispatch(
+            setNotification({
+                status: "error",
+                title: "Error!",
+                message: "Fetching cart data failed!",
+            })
+        );
+    }
+};
+
+export const { addItem, addOne, removeOne, setCartItems } = cartSlice.actions;
 export default cartSlice.reducer;

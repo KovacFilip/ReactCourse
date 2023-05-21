@@ -13,6 +13,7 @@ export const MainNavigation = () => {
                                 console.log(p);
                                 return p.isActive ? classes.active : undefined;
                             }}
+                            end
                         >
                             Home
                         </NavLink>
@@ -23,6 +24,7 @@ export const MainNavigation = () => {
                             className={({ isActive }) =>
                                 isActive ? classes.active : undefined
                             }
+                            end
                         >
                             Products
                         </NavLink>

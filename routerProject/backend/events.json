@@ -1,11 +1,1 @@
-{
-  "events": [
-    {
-      "id": "e1",
-      "title": "A dummy event",
-      "date": "2023-02-22",
-      "image": "https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg",
-      "description": "Join this amazing event and connect with fellow developers."
-    }
-  ]
-}
+{"events":[{"title":"Another cool event","image":"https://blog.shoptet.cz/wp-content/uploads/2021/05/Why-Live-Events-Should-Be-At-The-Center-Of-Your-Marketing-Strategy.png","date":"2023-05-04","description":"bla bla","id":"e2de446b-9a1b-4774-a2e1-76102d244cf5"},{"title":"hello wordl","image":"https://blog.shoptet.cz/wp-content/uploads/2021/05/Why-Live-Events-Should-Be-At-The-Center-Of-Your-Marketing-Strategy.png","date":"2023-05-06","description":"bbb","id":"bbf8515a-671c-404f-a485-c5cc1b12da83"},{"title":"new test","image":"https://blog.shoptet.cz/wp-content/uploads/2021/05/Why-Live-Events-Should-Be-At-The-Center-Of-Your-Marketing-Strategy.png","date":"2023-05-20","description":"abc","id":"bd5faaab-5aca-4e85-80a9-7b639cf387cc"},{"title":"Test test","image":"https://blog.shoptet.cz/wp-content/uploads/2021/05/Why-Live-Events-Should-Be-At-The-Center-Of-Your-Marketing-Strategy.png","date":"2023-05-05","description":"Hello world","id":"7bca22bc-3342-4123-8f19-4b5e67bf8e9e"},{"title":"A new event","image":"https://blog.shoptet.cz/wp-content/uploads/2021/05/Why-Live-Events-Should-Be-At-The-Center-Of-Your-Marketing-Strategy.png","date":"2023-05-27","description":"abc","id":"711dbbba-6cf5-4148-b8b4-fe9828bb66c0"},{"title":"A new event","image":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fblog.shoptet.cz%2Fco-to-je-event-marketing%2F&psig=AOvVaw1WxrECidecomeAEEkE7-TP&ust=1684854670279000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLj_qPKaif8CFQAAAAAdAAAAABAE","date":"2023-05-13","description":"This is a description","id":"9cb6b631-08af-4ed8-9156-4ff6dbcd561c"},{"id":"e1","title":"A dummy event","date":"2023-02-22","image":"https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg","description":"Join this amazing event and connect with fellow developers."}]}

@@ -32,8 +32,6 @@ export async function action({ request }) {
         body: JSON.stringify(authData),
     });
 
-    console.log(response);
-
     if (response.status === 422 || response.status === 401) {
         return response;
     }
@@ -44,6 +42,11 @@ export async function action({ request }) {
             { status: 500 }
         );
     }
+
+    const resData = await response.json();
+    const token = resData.token;
+
+    localStorage.setItem("token", token);
 
     return redirect("/");
 }

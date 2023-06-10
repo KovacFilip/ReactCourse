@@ -15,10 +15,18 @@ function App() {
         setTodos((prev: todoModel[]) => [...prev, newTodo]);
     };
 
+    const removeTodoHandler = (todoId: string) => {
+        const newTodos: todoModel[] = todos.filter(
+            (todo) => todo.id !== todoId
+        );
+
+        setTodos(newTodos);
+    };
+
     return (
         <div className={classes.global}>
             <NewTodo onAddTodo={addTodoHandler} />
-            <Todos items={todos} />
+            <Todos items={todos} removeTodoHandler={removeTodoHandler} />
         </div>
     );
 }

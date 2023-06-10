@@ -16,11 +16,7 @@ function App() {
     };
 
     const removeTodoHandler = (todoId: string) => {
-        const newTodos: todoModel[] = todos.filter(
-            (todo) => todo.id !== todoId
-        );
-
-        setTodos(newTodos);
+        setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId));
     };
 
     return (

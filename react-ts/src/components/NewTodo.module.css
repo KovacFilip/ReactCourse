@@ -1,0 +1,24 @@
+.input {
+    min-width: 20rem;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+}
+
+.label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    padding-right: 10px;
+}
+
+.button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #3f51b5;
+    color: white;
+    border: 1px solid #3f51b5;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.25rem;
+    margin-left: 10px;
+}

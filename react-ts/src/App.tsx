@@ -1,4 +1,5 @@
 import { useState } from "react";
+import classes from "./App.module.css";
 import { NewTodo } from "./components/NewTodo";
 import { Todos } from "./components/Todos";
 import { Todo as todoModel } from "./models/todo";
@@ -15,9 +16,9 @@ function App() {
     };
 
     return (
-        <div>
+        <div className={classes.global}>
             <NewTodo onAddTodo={addTodoHandler} />
-            <Todos items={todos} />;
+            <Todos items={todos} />
         </div>
     );
 }

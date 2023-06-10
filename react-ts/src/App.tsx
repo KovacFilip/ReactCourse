@@ -1,28 +1,15 @@
-import { useState } from "react";
 import classes from "./App.module.css";
 import { NewTodo } from "./components/NewTodo";
 import { Todos } from "./components/Todos";
-import { Todo as todoModel } from "./models/todo";
+import { TodosContextProvider } from "./store/todos-context";
 
 function App() {
-    const [todos, setTodos] = useState<todoModel[]>([]);
-
-    const addTodoHandler = (newTodoText: string) => {
-        const newTodo: todoModel = {
-            id: Date.now().toString(),
-            text: newTodoText,
-        };
-        setTodos((prev: todoModel[]) => [...prev, newTodo]);
-    };
-
-    const removeTodoHandler = (todoId: string) => {
-        setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId));
-    };
-
     return (
         <div className={classes.global}>
-            <NewTodo onAddTodo={addTodoHandler} />
-            <Todos items={todos} removeTodoHandler={removeTodoHandler} />
+            <TodosContextProvider>
+                <NewTodo />
+                <Todos />
+            </TodosContextProvider>
         </div>
     );
 }
